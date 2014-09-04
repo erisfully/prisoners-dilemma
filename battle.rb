@@ -37,7 +37,7 @@ class Moses
   end
 end
 
-class Yourclass
+class Ash
 
   def initialize
   end
@@ -47,24 +47,30 @@ class Yourclass
   end
 
   def choice(record, cooperate_score, defect_score, win_score, lose_score)
-    #Code Starts Here!!!
+    cooperate = false
 
+    if record.last == win_score
+      cooperate = false
 
+    elsif record.last == cooperate_score
+      cooperate = true
 
+    elsif record.last == defect_score
+      cooperate = true
 
-
-
-    #Code Ends Here!!!
+    elsif record.last == lose_score
+      cooperate = false
+    end
+    cooperate
   end
 end
-
 
 
 def fight
 
   #-------Enter combatants!------
   player_one = Yourclass.new
-  player_two = Devil.new
+  player_two = Moses.new
   #------------------------------
 
   player_one_record = []
@@ -106,10 +112,11 @@ def fight
   end
 
   p "="*50
-  p "#{player_one.name} score: #{player_one_final_score = player_one_record.inject{|sum,x| sum + x }}"
-  p "#{player_two.name} score: #{player_two_final_score = player_two_record.inject{|sum,x| sum + x }}"
+  p "#{player_one.name} score: #{player_one_final_score = player_one_record.inject { |sum, x| sum + x }}"
+  p "#{player_two.name} score: #{player_two_final_score = player_two_record.inject { |sum, x| sum + x }}"
   p "="*50
 
 end
 
 fight
+
